@@ -25,7 +25,7 @@
 
 /**
  * Challenge: How can you optimize your algorithm if one array is very large and the other is very small?
- * Run Time: ms
+ * Run Time: 6ms
  */
 class Solution {
 public:
