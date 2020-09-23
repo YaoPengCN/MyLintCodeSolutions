@@ -46,7 +46,7 @@
 // };
 
 /**
- * Run Time: 602ms
+ * Run Time: 500ms
  */
 class Solution {
 public:
@@ -65,21 +65,15 @@ public:
 
         int source_size = source.size();
         int target_size = target.size();
-        int i, j;
 
         if (source_size < target_size) {
             return -1;
         }
 
-        for (i = 0; i < source_size - target_size + 1; i++) {
-            for (j = 0; j < target_size; j++) {
-                if (source[i + j] != target[j]) {
-                    break;
+        for (int i = 0; i < source_size - target_size + 1; i++) {
+            if (source.substr(i,target_size) == target) {
+                    return i;
                 }
-            }
-            if (j == target_size) {
-                return i;
-            }
         }
         return -1;
     }
