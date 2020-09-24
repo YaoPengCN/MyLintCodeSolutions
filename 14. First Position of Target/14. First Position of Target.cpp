@@ -36,24 +36,9 @@
 * 11. Search Range in Binary Search Tree
 */
 
-// /**
-//  * Challenge: If the count of numbers is bigger than 2^32, can your code work properly?
-//  * Run Time: ms
-//  */
-// class Solution {
-// public:
-//     /**
-//      * @param nums: The integer array.
-//      * @param target: Target to find.
-//      * @return: The first position of target. Position starts from 0.
-//      */
-//     int binarySearch(vector<int> &nums, int target) {
-//         // write your code here
-//     }
-// };
-
 /**
- * Run Time: 406ms
+ * Challenge: If the count of numbers is bigger than 2^32, can your code work properly?
+ * Run Time: 403ms
  */
 class Solution
 {
@@ -94,3 +79,46 @@ public:
                 return -1;
     }
 };
+
+// /**
+//  * Run Time: 406ms
+//  */
+// class Solution
+// {
+// public:
+//     /**
+//      * @param nums: The integer array.
+//      * @param target: Target to find.
+//      * @return: The first position of target. Position starts from 0.
+//      */
+//     int binarySearch(vector<int> &nums, int target)
+//     {
+//         vector<int>::size_type left, right;
+//         left = 0;
+//         right = nums.size() - 1;
+
+//         if (nums.empty())
+//             return -1;
+
+//         if (nums[left] == target)
+//             return left;
+
+//         while (left < right - 1)
+//         {
+//             vector<int>::size_type mid = left + (right - left) / 2;
+//             if (nums[mid] == target)
+//                 right = mid;
+//             if (nums[mid] < target)
+//                 left = mid;
+//             else
+//                 right = mid;
+//         }
+
+//         if (nums[left] == target)
+//             return left;
+//         else if (nums[right] == target)
+//                 return right;
+//             else
+//                 return -1;
+//     }
+// };
