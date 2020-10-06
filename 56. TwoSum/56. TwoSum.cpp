@@ -44,6 +44,12 @@
 */
 
 /**
+ * Challenge
+ * · O(n) Space, O(nlogn) Time
+ * 
+ * Double pointers.
+ * Ref[1]: https://www.jiuzhang.com/problem/two-sum/#tag-lang-cpp
+ * 
  * Run Time:  50ms
  */
 class Solution
@@ -56,17 +62,96 @@ public:
      */
     vector<int> twoSum(vector<int> &numbers, int target)
     {
-        vector<int> result;
-        for (vector<int>::size_type i = 0; i != numbers.size() - 1; i++)
+        vector<int> backUp = numbers;
+        sort(numbers.begin(), numbers.end());
+        int i = 0, j = numbers.size() - 1;
+        while (i < j)
         {
-            for (vector<int>::size_type j = i + 1; j != numbers.size(); j++)
-                if (numbers[i] + numbers[j] == target)
-                {
-                    result.push_back(i);
-                    result.push_back(j);
-                    return result;
-                }
+            // 找到答案
+            if (numbers[i] + numbers[j] == target)
+            {
+                break;
+            }
+            // 左指针右移
+            else if (numbers[i] + numbers[j] < target)
+            {
+                i += 1;
+            }
+            // 右指针左移
+            else
+            {
+                j -= 1;
+            }
         }
-        return result;
+        int a = 0, b = 0; // 标记是否找到，避免i，j值相同的情况
+        for (int k = 0; k < numbers.size(); k++)
+        {
+            //查找对应下标
+            if (backUp[k] == numbers[i] && a == 0)
+            {
+                i = k;
+                a = 1;
+            }
+            else if (backUp[k] == numbers[j] && b == 0)
+            {
+                j = k;
+                b = 1;
+            }
+            else if (a == 1 && b == 1)
+            {
+                break;
+            }
+        }
+        vector<int> ans;
+        ans.push_back(i);
+        ans.push_back(j);
+        sort(ans.begin(), ans.end());
+        return ans;
     }
 };
+
+// /**
+//  * Challenge
+//  * · O(n) Space, O(n) Time
+//  *
+//  * Run Time:  ms
+//  */
+// class Solution {
+// public:
+//     /**
+//      * @param numbers: An array of Integer
+//      * @param target: target = numbers[index1] + numbers[index2]
+//      * @return: [index1 + 1, index2 + 1] (index1 < index2)
+//      */
+//     vector<int> twoSum(vector<int> &numbers, int target) {
+//         // write your code here
+//     }
+// };
+
+// /**
+//  * Run Time:  50ms
+//  */
+// class Solution
+// {
+// public:
+//     /**
+//      * @param numbers: An array of Integer
+//      * @param target: target = numbers[index1] + numbers[index2]
+//      * @return: [index1 + 1, index2 + 1] (index1 < index2)
+//      */
+//     vector<int> twoSum(vector<int> &numbers, int target)
+//     {
+//         vector<int> result;
+//         for (vector<int>::size_type i = 0; i != numbers.size() - 1; i++)
+//         {
+//             for (vector<int>::size_type j = i + 1; j != numbers.size(); j++)
+//                 if (numbers[i] + numbers[j] == target)
+//                 {
+//                     result.push_back(i);
+//                     result.push_back(j);
+//                     return result;
+//                 }
+//         }
+//         return result;
+//     }
+// };
