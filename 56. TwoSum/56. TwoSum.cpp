@@ -45,11 +45,11 @@
 
 /**
  * Challenge
- * · O(n) Space, O(nlogn) Time
+ * · O(n) Space, O(n) Time
  * 
- * Double pointers.
+ * HashMap.
  * Ref[1]: https://www.jiuzhang.com/problem/two-sum/#tag-lang-cpp
- * 
+ *
  * Run Time:  50ms
  */
 class Solution
@@ -62,69 +62,90 @@ public:
      */
     vector<int> twoSum(vector<int> &numbers, int target)
     {
-        vector<int> backUp = numbers;
-        sort(numbers.begin(), numbers.end());
-        int i = 0, j = numbers.size() - 1;
-        while (i < j)
+        unordered_map<int, int> hash;
+        vector<int> result;
+        for (vector<int>::size_type i = 0; i != numbers.size(); i++)
         {
-            // 找到答案
-            if (numbers[i] + numbers[j] == target)
+            // 查找是否存在满足一个数+nums[i]==target
+            if (hash.count(numbers[i]) > 0)
             {
-                break;
+                result.push_back(hash[numbers[i]]);
+                result.push_back(i);
+                return result;
             }
-            // 左指针右移
-            else if (numbers[i] + numbers[j] < target)
-            {
-                i += 1;
-            }
-            // 右指针左移
-            else
-            {
-                j -= 1;
-            }
+            hash[target - numbers[i]] = i;
         }
-        int a = 0, b = 0; // 标记是否找到，避免i，j值相同的情况
-        for (int k = 0; k < numbers.size(); k++)
-        {
-            //查找对应下标
-            if (backUp[k] == numbers[i] && a == 0)
-            {
-                i = k;
-                a = 1;
-            }
-            else if (backUp[k] == numbers[j] && b == 0)
-            {
-                j = k;
-                b = 1;
-            }
-            else if (a == 1 && b == 1)
-            {
-                break;
-            }
-        }
-        vector<int> ans;
-        ans.push_back(i);
-        ans.push_back(j);
-        sort(ans.begin(), ans.end());
-        return ans;
+        return result;
     }
 };
 
 // /**
 //  * Challenge
-//  * · O(n) Space, O(n) Time
+//  * · O(n) Space, O(nlogn) Time
 //  *
-//  * Run Time:  ms
+//  * Double pointers.
+//  * Ref[1]: https://www.jiuzhang.com/problem/two-sum/#tag-lang-cpp
+//  *
+//  * Run Time:  50ms
 //  */
-// class Solution {
+// class Solution
+// {
 // public:
 //     /**
 //      * @param numbers: An array of Integer
 //      * @param target: target = numbers[index1] + numbers[index2]
 //      * @return: [index1 + 1, index2 + 1] (index1 < index2)
 //      */
-//     vector<int> twoSum(vector<int> &numbers, int target) {
-//         // write your code here
+//     vector<int> twoSum(vector<int> &numbers, int target)
+//     {
+//         vector<int> backUp = numbers;
+//         vector<int> ans;
+//         vector<int>::size_type i = 0, j = numbers.size() - 1;
+
+//         sort(numbers.begin(), numbers.end());
+
+//         while (i < j)
+//         {
+//             // 找到答案
+//             if (numbers[i] + numbers[j] == target)
+//             {
+//                 break;
+//             }
+//             // 左指针右移
+//             else if (numbers[i] + numbers[j] < target)
+//             {
+//                 i += 1;
+//             }
+//             // 右指针左移
+//             else
+//             {
+//                 j -= 1;
+//             }
+//         }
+//         int a = 0, b = 0; // 标记是否找到，避免i，j值相同的情况
+//         for (vector<int>::size_type k = 0; k != numbers.size(); k++)
+//         {
+//             //查找对应下标
+//             if (backUp[k] == numbers[i] && a == 0)
+//             {
+//                 i = k;
+//                 a = 1;
+//             }
+//             else if (backUp[k] == numbers[j] && b == 0)
+//             {
+//                 j = k;
+//                 b = 1;
+//             }
+//             else if (a == 1 && b == 1)
+//             {
+//                 break;
+//             }
+//         }
+
+//         ans.push_back(i);
+//         ans.push_back(j);
+//         sort(ans.begin(), ans.end());
+//         return ans;
 //     }
 // };
 
