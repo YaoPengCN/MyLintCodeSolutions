@@ -50,11 +50,9 @@
  * Challenge
  * Can you do it without recursion?
  *
- * Morris Algorithm
+ * Stack
  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-inorder-traversal/#tag-lang-cpp
- * Ref[2]: https://zhuanlan.zhihu.com/p/101321696
- * Ref[3]: https://zhuanlan.zhihu.com/p/89858150
- * Run Time: 52ms
+ * Run Time: 50ms
  */
 /**
  * Definition of TreeNode:
@@ -78,39 +76,106 @@ public:
      */
     vector<int> inorderTraversal(TreeNode *root)
     {
-        vector<int> res;
-        TreeNode *cur = NULL;
-
-        while (root != NULL)
+        stack<TreeNode *> st;
+        vector<int> result;
+        while (root)
         {
-            if (root->left != NULL)
+            st.push(root);
+            root = root->left;
+        }
+        while (!st.empty())
+        {
+            TreeNode *node = st.top();
+            result.push_back(node->val);
+            if (!node->right)
             {
-                cur = root->left;
-                while (cur->right && cur->right != root)
+                node = st.top();
+                st.pop();
+                while (!st.empty() && st.top()->right == node)
                 {
-                    cur = cur->right;
-                }
-                if (cur->right == root)
-                {
-                    res.push_back(root->val);
-                    cur->right = NULL;
-                    root = root->right;
-                }
-                else
-                {
-                    cur->right = root;
-                    root = root->left;
+                    node = st.top();
+                    st.pop();
                 }
             }
             else
             {
-                res.push_back(root->val);
-                root = root->right;
+                node = node->right;
+                while (node)
+                {
+                    st.push(node);
+                    node = node->left;
+                }
             }
         }
-        return res;
+        return result;
     }
 };
+
+// /**
+//  * Challenge
+//  * Can you do it without recursion?
+//  *
+//  * Morris Algorithm
+//  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-inorder-traversal/#tag-lang-cpp
+//  * Ref[2]: https://zhuanlan.zhihu.com/p/101321696
+//  * Ref[3]: https://zhuanlan.zhihu.com/p/89858150
+//  * Run Time: 52ms
+//  */
+// /**
+//  * Definition of TreeNode:
+//  * class TreeNode {
+//  * public:
+//  *     int val;
+//  *     TreeNode *left, *right;
+//  *     TreeNode(int val) {
+//  *         this->val = val;
+//  *         this->left = this->right = NULL;
+//  *     }
+//  * }
+//  */
+
+// class Solution
+// {
+// public:
+//     /**
+//      * @param root: A Tree
+//      * @return: Inorder in ArrayList which contains node values.
+//      */
+//     vector<int> inorderTraversal(TreeNode *root)
+//     {
+//         vector<int> res;
+//         TreeNode *cur = NULL;
+
+//         while (root != NULL)
+//         {
+//             if (root->left != NULL)
+//             {
+//                 cur = root->left;
+//                 while (cur->right && cur->right != root)
+//                 {
+//                     cur = cur->right;
+//                 }
+//                 if (cur->right == root)
+//                 {
+//                     res.push_back(root->val);
+//                     cur->right = NULL;
+//                     root = root->right;
+//                 }
+//                 else
+//                 {
+//                     cur->right = root;
+//                     root = root->left;
+//                 }
+//             }
+//             else
+//             {
+//                 res.push_back(root->val);
+//                 root = root->right;
+//             }
+//         }
+//         return res;
+//     }
+// };
 
 // /**
 //  * Divide and conquer
