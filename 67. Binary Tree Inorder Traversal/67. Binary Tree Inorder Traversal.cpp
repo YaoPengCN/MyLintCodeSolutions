@@ -52,6 +52,7 @@
  *
  * Stack
  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-inorder-traversal/#tag-lang-cpp
+ * Ref[2]: https://blog.csdn.net/zhuiyisinian/article/details/107946790
  * Run Time: 50ms
  */
 /**
@@ -78,34 +79,15 @@ public:
     {
         stack<TreeNode *> st;
         vector<int> result;
-        while (root)
-        {
-            st.push(root);
-            root = root->left;
-        }
-        while (!st.empty())
-        {
-            TreeNode *node = st.top();
-            result.push_back(node->val);
-            if (!node->right)
-            {
-                node = st.top();
-                st.pop();
-                while (!st.empty() && st.top()->right == node)
-                {
-                    node = st.top();
-                    st.pop();
-                }
+        while (root || !st.empty()) {
+            while (root) {
+                st.push(root);
+                root = root->left;
             }
-            else
-            {
-                node = node->right;
-                while (node)
-                {
-                    st.push(node);
-                    node = node->left;
-                }
-            }
+            root = st.top();
+            st.pop();
+            result.push_back(root->val);
+            root = root->right;
         }
         return result;
     }
