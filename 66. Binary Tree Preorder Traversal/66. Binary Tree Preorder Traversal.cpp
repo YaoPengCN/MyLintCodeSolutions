@@ -45,8 +45,11 @@
 /**
  * Challenge
  * Can you do it without recursion?
+ * 
+ * Morris Algorithm
  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-preorder-traversal/#tag-lang-ALL
- * Run Time: ms
+ * Ref[2]: https://zhuanlan.zhihu.com/p/101321696
+ * Run Time: 50ms
  */
 /**
  * Definition of TreeNode:
@@ -68,7 +71,31 @@ public:
      * @return: Preorder in ArrayList which contains node values.
      */
     vector<int> preorderTraversal(TreeNode * root) {
-        // write your code here
+        vector<int> res;
+        TreeNode *cur = NULL;
+        
+        while (root != NULL) {
+            if (root->left != NULL) {
+                cur = root->left;
+                while (cur->right != NULL && cur->right != root) {
+                    cur = cur->right;
+                }
+                if (cur->right == root) {
+                    cur->right = NULL;
+                    root = root->right;
+                }
+                else {
+                    res.push_back(root->val);
+                    cur->right = root;
+                    root = root->left;
+                }
+            }
+            else {
+                res.push_back(root->val);
+                root = root->right;
+            }
+        }
+        return res;
     }
 };
 
