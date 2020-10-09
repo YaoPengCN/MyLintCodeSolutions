@@ -47,9 +47,14 @@
 */
 
 /**
- * Divide and conquer
+ * Challenge
+ * Can you do it without recursion?
+ *
+ * Morris Algorithm
  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-inorder-traversal/#tag-lang-cpp
- * Run Time: 50ms
+ * Ref[2]: https://zhuanlan.zhihu.com/p/101321696
+ * Ref[3]: https://zhuanlan.zhihu.com/p/89858150
+ * Run Time: 52ms
  */
 /**
  * Definition of TreeNode:
@@ -73,15 +78,76 @@ public:
      */
     vector<int> inorderTraversal(TreeNode *root)
     {
-        vector<int> result;
-        if (!root)
-            return result;
-        vector<int> leftResult = inorderTraversal(root->left);
-        vector<int> midResult = {root->val};
-        vector<int> rightResult = inorderTraversal(root->right);
-        result.insert(result.end(), leftResult.begin(), leftResult.end());
-        result.insert(result.end(), midResult.begin(), midResult.end());
-        result.insert(result.end(), rightResult.begin(), rightResult.end());
-        return result;
+        vector<int> res;
+        TreeNode *cur = NULL;
+
+        while (root != NULL)
+        {
+            if (root->left != NULL)
+            {
+                cur = root->left;
+                while (cur->right && cur->right != root)
+                {
+                    cur = cur->right;
+                }
+                if (cur->right == root)
+                {
+                    res.push_back(root->val);
+                    cur->right = NULL;
+                    root = root->right;
+                }
+                else
+                {
+                    cur->right = root;
+                    root = root->left;
+                }
+            }
+            else
+            {
+                res.push_back(root->val);
+                root = root->right;
+            }
+        }
+        return res;
     }
 };
+
+// /**
+//  * Divide and conquer
+//  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-inorder-traversal/#tag-lang-cpp
+//  * Run Time: 50ms
+//  */
+// /**
+//  * Definition of TreeNode:
+//  * class TreeNode {
+//  * public:
+//  *     int val;
+//  *     TreeNode *left, *right;
+//  *     TreeNode(int val) {
+//  *         this->val = val;
+//  *         this->left = this->right = NULL;
+//  *     }
+//  * }
+//  */
+
+// class Solution
+// {
+// public:
+//     /**
+//      * @param root: A Tree
+//      * @return: Inorder in ArrayList which contains node values.
+//      */
+//     vector<int> inorderTraversal(TreeNode *root)
+//     {
+//         vector<int> result;
+//         if (!root)
+//             return result;
+//         vector<int> leftResult = inorderTraversal(root->left);
+//         vector<int> midResult = {root->val};
+//         vector<int> rightResult = inorderTraversal(root->right);
+//         result.insert(result.end(), leftResult.begin(), leftResult.end());
+//         result.insert(result.end(), midResult.begin(), midResult.end());
+//         result.insert(result.end(), rightResult.begin(), rightResult.end());
+//         return result;
+//     }
+// };
