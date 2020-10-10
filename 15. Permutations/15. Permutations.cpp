@@ -40,9 +40,11 @@
 */
 
 /**
+ * Challenge
+ * Do it without recursion.
  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
  * Ref[2]: https://www.jiuzhang.com/problem/permutations/#tag-lang-cpp
- * Run Time:  403ms
+ * Run Time:  448ms
  */
 
 class Solution
@@ -54,47 +56,103 @@ public:
      */
     vector<vector<int>> permute(vector<int> &nums)
     {
-        vector<vector<int>> results;
+        vector<vector<int>> res;
+        bool next = true;
 
-        // 如果数组为空直接返回空
-        if (nums.size() == 0)
+        sort(nums.begin(), nums.end());
+        while (next)
         {
-            results.push_back(vector<int>());
-            return results;
+            res.push_back(nums);
+            next = nextPermute(nums);
         }
-
-        // dfs
-        vector<bool> used(nums.size(), 0);
-        vector<int> current;
-        dfs(nums, used, current, results);
-
-        return results;
+        return res;
     }
 
 private:
-    void dfs(vector<int> nums, vector<bool> &used, vector<int> &current, vector<vector<int>> &results)
+    bool nextPermute(vector<int> &nums)
     {
-        //找到一组排列，已到达边界条件
-        if (current.size() == nums.size())
+        int i = nums.size() - 2;
+
+        while (i >= 0 && nums[i] >= nums[i + 1])
         {
-            results.push_back(current);
-            return;
+            i--;
         }
 
-        for (int i = 0; i < nums.size(); i++)
+        if (i >= 0)
         {
-            // i位置这个元素已经被用过
-            if (used[i])
+            int j = nums.size() - 1;
+            while (nums[j] <= nums[i])
             {
-                continue;
+                j--;
             }
-
-            //继续递归
-            current.push_back(nums[i]);
-            used[i] = true;
-            dfs(nums, used, current, results);
-            used[i] = false;
-            current.pop_back();
+            swap(nums[i], nums[j]);
         }
+        else
+        {
+            return false;
+        }
+
+        reverse(nums.begin() + i + 1, nums.end());
+        return true;
     }
 };
+
+// /**
+//  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
+//  * Ref[2]: https://www.jiuzhang.com/problem/permutations/#tag-lang-cpp
+//  * Run Time:  403ms
+//  */
+
+// class Solution
+// {
+// public:
+//     /*
+//      * @param nums: A list of integers.
+//      * @return: A list of permutations.
+//      */
+//     vector<vector<int>> permute(vector<int> &nums)
+//     {
+//         vector<vector<int>> results;
+
+//         // 如果数组为空直接返回空
+//         if (nums.size() == 0)
+//         {
+//             results.push_back(vector<int>());
+//             return results;
+//         }
+
+//         // dfs
+//         vector<bool> used(nums.size(), 0);
+//         vector<int> current;
+//         dfs(nums, used, current, results);
+
+//         return results;
+//     }
+
+// private:
+//     void dfs(vector<int> nums, vector<bool> &used, vector<int> &current, vector<vector<int>> &results)
+//     {
+//         //找到一组排列，已到达边界条件
+//         if (current.size() == nums.size())
+//         {
+//             results.push_back(current);
+//             return;
+//         }
+
+//         for (int i = 0; i < nums.size(); i++)
+//         {
+//             // i位置这个元素已经被用过
+//             if (used[i])
+//             {
+//                 continue;
+//             }
+
+//             //继续递归
+//             current.push_back(nums[i]);
+//             used[i] = true;
+//             dfs(nums, used, current, results);
+//             used[i] = false;
+//             current.pop_back();
+//         }
+//     }
+// };
