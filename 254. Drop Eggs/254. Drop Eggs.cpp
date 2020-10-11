@@ -28,10 +28,16 @@
  * 584. Drop Eggs II
  */
 
+
+
 /**
- * Find the minimum x, such that x + (x - 1) +...+ 1 >= n.
- * Ref[1]: https://mp.weixin.qq.com/s/xn4LjWfaKTPQeCXR0qDqZg
- * Ref[2]: https://www.jiuzhang.com/problem/drop-eggs/
+ * 假设实验次数序列为X=(x,x1,x2…xm),则最坏情况下有x+x1+x2…+xm=n.
+ * 要使得实验次数最小化,令最小次数为min_x,且满足不等式: x>=min_x，x1+1>=min_x，x2+2>=min_x，…，xm+m>=min_x 
+ * 同时取最小值带入等式，得: min_x+(min_x-1)+…+(min_x-m)=n 
+ * 推出(m+1)min_x=n+(1+2+…+m) 
+ * 两端同时除以m+1: min_x=n/(m+1)+m/2=n/(m+1)+(m+1)/2-1/2 
+ * 放缩得:min_x>=2sqrt(n/2)-1/2=(sqrt(8n)-1)/2
+ * Ref[1]: https://www.jiuzhang.com/problem/drop-eggs/
  * Run Time: 50ms
  */
 class Solution
@@ -43,12 +49,32 @@ public:
      */
     int dropEggs(int n)
     {
-        long long ans = 0;
-        int x = 0;
-        while (ans < n) {
-            x += 1;
-            ans += x;
-        }
-        return x;
+        long long x = n;
+        return ceil((sqrt(8*x)-1)/2);
     }
 };
+
+// /**
+//  * Find the minimum x, such that x + (x - 1) +...+ 1 >= n.
+//  * Ref[1]: https://mp.weixin.qq.com/s/xn4LjWfaKTPQeCXR0qDqZg
+//  * Ref[2]: https://www.jiuzhang.com/problem/drop-eggs/
+//  * Run Time: 50ms
+//  */
+// class Solution
+// {
+// public:
+//     /**
+//      * @param n: An integer
+//      * @return: The sum of a and b
+//      */
+//     int dropEggs(int n)
+//     {
+//         long long ans = 0;
+//         int x = 0;
+//         while (ans < n) {
+//             x += 1;
+//             ans += x;
+//         }
+//         return x;
+//     }
+// };
