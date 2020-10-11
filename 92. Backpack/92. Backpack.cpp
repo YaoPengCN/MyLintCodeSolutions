@@ -34,7 +34,7 @@
  * 564. Combination Sum IV
  * 563. Backpack V
  * 562. Backpack IV
- * 400. Backpack III
+ * 440. Backpack III
  * 279. Number of Ways to Represent N Cents
  * 125. Backpack II
  */
