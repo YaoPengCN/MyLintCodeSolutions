@@ -44,9 +44,12 @@
  */
 
 /**
+ * Challenge
+ * O(nm) memory is acceptable, can you do it in O(m) memory?
+ * 
  * Ref[1]: https://mp.weixin.qq.com/s/RXfnhSpVBmVneQjDSUSAVQ
  * Ref[2]: https://www.jiuzhang.com/problem/backpack-ii/
- * Run Time: 51ms
+ * Run Time: 50ms
  */
 class Solution
 {
@@ -59,24 +62,54 @@ public:
      */
 	int backPackII(int m, vector<int> &A, vector<int> &V)
 	{
-		vector<int>::size_type n=A.size();
-		vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
-		for (int i = 1; i <= n; i++)
+		if (m == 0 || A.size() == 0)
+			return 0;
+		vector<int> dp(m + 1);
+		for (int i = 0; i != A.size(); i++)
 		{
-			for (int w = 1; w <= m; w++)
+			for (int j = m; j >= A[i]; j--)
 			{
-				if (w - A[i - 1] < 0)
-				{
-					// 当前背包容量装不下，只能选择不装入背包
-					dp[i][w] = dp[i - 1][w];
-				}
-				else
-				{
-					// 装入或者不装入背包，择优
-					dp[i][w] = max(dp[i - 1][w - A[i - 1]] + V[i - 1], dp[i - 1][w]);
-				}
+				dp[j] = max(dp[j], dp[j - A[i]] + V[i]);
 			}
 		}
-		return dp[n][m];
+		return dp[m];
 	}
 };
+
+// /**
+//  * Ref[1]: https://mp.weixin.qq.com/s/RXfnhSpVBmVneQjDSUSAVQ
+//  * Ref[2]: https://www.jiuzhang.com/problem/backpack-ii/
+//  * Run Time: 51ms
+//  */
+// class Solution
+// {
+// public:
+// 	/**
+//      * @param m: An integer m denotes the size of a backpack
+//      * @param A: Given n items with size A[i]
+//      * @param V: Given n items with value V[i]
+//      * @return: The maximum value
+//      */
+// 	int backPackII(int m, vector<int> &A, vector<int> &V)
+// 	{
+// 		vector<int>::size_type n=A.size();
+// 		vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+// 		for (int i = 1; i <= n; i++)
+// 		{
+// 			for (int w = 1; w <= m; w++)
+// 			{
+// 				if (w - A[i - 1] < 0)
+// 				{
+// 					// 当前背包容量装不下，只能选择不装入背包
+// 					dp[i][w] = dp[i - 1][w];
+// 				}
+// 				else
+// 				{
+// 					// 装入或者不装入背包，择优
+// 					dp[i][w] = max(dp[i - 1][w - A[i - 1]] + V[i - 1], dp[i - 1][w]);
+// 				}
+// 			}
+// 		}
+// 		return dp[n][m];
+// 	}
+// };
