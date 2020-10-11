@@ -29,7 +29,7 @@
  */
 
 /**
- * Ref[1]: https://mp.weixin.qq.com/s/RXfnhSpVBmVneQjDSUSAVQ
+ * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/bei-bao-zi-ji
  * Ref[2]: https://www.jiuzhang.com/problem/partition-equal-subset-sum/
  * Run Time: 251ms
  */
