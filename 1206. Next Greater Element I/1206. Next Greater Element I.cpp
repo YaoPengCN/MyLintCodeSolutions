@@ -35,8 +35,12 @@
  * */
 
 /**
- * Run Time: 50ms
+ * Monotone stack and hashmap
+ * Ref[1]: https://mp.weixin.qq.com/s/KYfjBejo84AmajnPZNs5nA
+ * Ref[2]: https://www.jiuzhang.com/problem/next-greater-element-i/#tag-lang-cpp
+ * Run Time: 101ms
  */
+
 class Solution
 {
 public:
@@ -47,28 +51,71 @@ public:
      */
 	vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
 	{
+		vector<int>::size_type n = nums2.size();
+		stack<int> st;
+		map<int, int> answer;
 		vector<int> result;
-		for (vector<int>::size_type i = 0; i != nums1.size(); i++)
+
+		for (int i = n - 1; i >= 0; i--)
 		{
-			bool flag = false;
-			vector<int>::iterator iter = find(nums2.begin(), nums2.end(), nums1[i]);
-			int index = distance(nums2.begin(), iter);
-			for (int j = index; j != nums2.size(); j++)
+			while (!st.empty())
 			{
-				if (nums1[i] < nums2[j])
-				{
-					flag = true;
-					index = j;
+				if (st.top() <= nums2[i])
+					st.pop();
+				else
 					break;
-				}
 			}
-			if (flag)
-				result.push_back(nums2[index]);
+			if (!st.empty())
+				answer[nums2[i]] = st.top();
+			st.push(nums2[i]);
+		}
+
+		for (int i : nums1)
+		{
+			if (answer.count(i))
+				result.push_back(answer[i]);
 			else
-			{
 				result.push_back(-1);
-			}
 		}
 		return result;
 	}
 };
+
+// /**
+//  * Run Time: 50ms
+//  */
+// class Solution
+// {
+// public:
+// 	/**
+//      * @param nums1: an array
+//      * @param nums2: an array
+//      * @return:  find all the next greater numbers for nums1's elements in the corresponding places of nums2
+//      */
+// 	vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
+// 	{
+// 		vector<int> result;
+// 		for (vector<int>::size_type i = 0; i != nums1.size(); i++)
+// 		{
+// 			bool flag = false;
+// 			vector<int>::iterator iter = find(nums2.begin(), nums2.end(), nums1[i]);
+// 			int index = distance(nums2.begin(), iter);
+// 			for (int j = index; j != nums2.size(); j++)
+// 			{
+// 				if (nums1[i] < nums2[j])
+// 				{
+// 					flag = true;
+// 					index = j;
+// 					break;
+// 				}
+// 			}
+// 			if (flag)
+// 				result.push_back(nums2[index]);
+// 			else
+// 			{
+// 				result.push_back(-1);
+// 			}
+// 		}
+// 		return result;
+// 	}
+// };
