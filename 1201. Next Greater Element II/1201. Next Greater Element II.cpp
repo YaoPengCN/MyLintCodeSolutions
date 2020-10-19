@@ -31,8 +31,12 @@
  * */
 
 /**
- * Run Time: 104ms
+ * Monotone stack
+ * Ref[1]: https://mp.weixin.qq.com/s/KYfjBejo84AmajnPZNs5nA
+ * Ref[2]: https://www.jiuzhang.com/problem/next-greater-element-ii/#tag-lang-cpp
+ * Run Time: 151ms
  */
+
 class Solution
 {
 public:
@@ -42,27 +46,57 @@ public:
      */
 	vector<int> nextGreaterElements(vector<int> &nums)
 	{
-		vector<int> result;
-		for (vector<int>::size_type i = 0; i != nums.size(); i++)
+		vector<int>::size_type n = nums.size();
+		vector<int> result(n, -1);
+		stack<int> st;
+		for (vector<int>::size_type i = 0; i < n * 2; i++)
 		{
-			bool flag = false;
-			int index = i;
-			for (int j = (i + 1) % nums.size(); j != i; j = (j + 1) % nums.size())
+			int num = nums[i % n];
+			while (!st.empty() && nums[st.top()] < num)
 			{
-				if (nums[i] < nums[j])
-				{
-					flag = true;
-					index = j;
-					break;
-				}
+				result[st.top()] = num;
+				st.pop();
 			}
-			if (flag)
-				result.push_back(nums[index]);
-			else
-			{
-				result.push_back(-1);
-			}
+			if (i < n)
+				st.push(i);
 		}
 		return result;
 	}
 };
+
+// /**
+//  * Run Time: 104ms
+//  */
+// class Solution
+// {
+// public:
+// 	/**
+//      * @param nums: an array
+//      * @return: the Next Greater Number for every element
+//      */
+// 	vector<int> nextGreaterElements(vector<int> &nums)
+// 	{
+// 		vector<int> result;
+// 		for (vector<int>::size_type i = 0; i != nums.size(); i++)
+// 		{
+// 			bool flag = false;
+// 			int index = i;
+// 			for (int j = (i + 1) % nums.size(); j != i; j = (j + 1) % nums.size())
+// 			{
+// 				if (nums[i] < nums[j])
+// 				{
+// 					flag = true;
+// 					index = j;
+// 					break;
+// 				}
+// 			}
+// 			if (flag)
+// 				result.push_back(nums[index]);
+// 			else
+// 			{
+// 				result.push_back(-1);
+// 			}
+// 		}
+// 		return result;
+// 	}
+// };
