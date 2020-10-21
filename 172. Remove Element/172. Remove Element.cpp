@@ -27,7 +27,7 @@
 /**
  * Two pointers
  * Ref[1]: https://mp.weixin.qq.com/s/55UPwGL0-Vgdh8wUEPXpMQ
- * Ref[2]: https://www.jiuzhang.com/problem/minimum-depth-of-binary-tree/
+ * Ref[2]: https://www.jiuzhang.com/problem/remove-element/#tag-lang-cpp
  * Running Time: 366ms
  */
 
