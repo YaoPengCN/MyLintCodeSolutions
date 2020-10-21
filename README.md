@@ -11,8 +11,8 @@ Rarely, however, [LintCode](https://www.lintcode.com/) might change the Applicat
 In this case, simply paste the solution into the Integrated Development Environment (IDE) of [LintCode OJ](https://www.lintcode.com/problem/) would not work.
 * Some [LintCode problems](https://www.lintcode.com/problem/) are not included because I haven't solved them yet.
 If you want to find the solutions for the missing problems, Section Reference below the content might be helpful.
-* The run time of a solution by [LintCode OJ](https://www.lintcode.com/problem/) is recorded in the comment of the corresponding source file.
-The run time is just for reference since even the submissions of the same solution could lead to different run time.
+* The running time of a solution by [LintCode OJ](https://www.lintcode.com/problem/) is recorded in the comment of the corresponding source file.
+The running time is just for reference since even the submissions of the same solution could lead to different running time.
 
 ## Online Judge
 
