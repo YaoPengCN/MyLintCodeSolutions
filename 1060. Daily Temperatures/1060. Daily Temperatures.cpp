@@ -32,7 +32,7 @@
  * Monotone stack
  * Ref[1]: https://mp.weixin.qq.com/s/KYfjBejo84AmajnPZNs5nA
  * Ref[2]: https://www.jiuzhang.com/problem/daily-temperatures/#tag-lang-cpp
- * Run Time: 201ms
+ * Running Time: 201ms
  */
 
 class Solution

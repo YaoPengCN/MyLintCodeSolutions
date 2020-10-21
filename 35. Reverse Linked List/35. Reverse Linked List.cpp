@@ -30,7 +30,7 @@
 
 /**
  * Challenge: Reverse it in one-place and in one-pass
- * Run Time:  50ms
+ * Running Time:  50ms
  */
 /**
  * Definition of singly-linked-list:

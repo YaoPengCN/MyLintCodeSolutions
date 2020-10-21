@@ -31,7 +31,7 @@
 
 /**
  * Challenge: O(n^2) is acceptable. Can you implement an O(n) algorithm? (hint: KMP)
- * Run Time: 260ms
+ * Running Time: 260ms
  */
 class Solution
 {
@@ -106,7 +106,7 @@ public:
 };
 
 // /**
-//  * Run Time: 500ms
+//  * Running Time: 500ms
 //  */
 // class Solution {
 // public:

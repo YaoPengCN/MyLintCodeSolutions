@@ -32,7 +32,7 @@
 
 /**
  * Challenge: O(n) time and O(1) extra space
- * Run Time:  778ms
+ * Running Time:  778ms
  */
 class Solution {
 public:

@@ -50,7 +50,7 @@
  * HashMap.
  * Ref[1]: https://www.jiuzhang.com/problem/two-sum/#tag-lang-cpp
  *
- * Run Time:  50ms
+ * Running Time:  50ms
  */
 class Solution
 {
@@ -86,7 +86,7 @@ public:
 //  * Double pointers.
 //  * Ref[1]: https://www.jiuzhang.com/problem/two-sum/#tag-lang-cpp
 //  *
-//  * Run Time:  50ms
+//  * Running Time:  50ms
 //  */
 // class Solution
 // {
@@ -150,7 +150,7 @@ public:
 // };
 
 // /**
-//  * Run Time:  50ms
+//  * Running Time:  50ms
 //  */
 // class Solution
 // {

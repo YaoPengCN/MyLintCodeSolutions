@@ -27,7 +27,7 @@
  * change the parameterization of the problem fi = max # floors we can cover using i trials and j eggs fi = 1 + fi-1 + fi-1 given m, n, we need to find first i such that fi >= n
  * Time complexity <= O(M * sqrt(N)) why? because when M >= 2, # trials is at most sqrt(N) (from Egg drop I result)
  * Ref[1]: https://www.jiuzhang.com/problem/drop-eggs-ii/
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 class Solution
 {
@@ -68,7 +68,7 @@ public:
 // /**
 //  * Ref[1]: https://mp.weixin.qq.com/s/xn4LjWfaKTPQeCXR0qDqZg
 //  * Ref[2]: https://www.jiuzhang.com/problem/drop-eggs-ii/
-//  * Run Time: 101ms
+//  * Running Time: 101ms
 //  */
 // class Solution
 // {

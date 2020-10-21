@@ -43,7 +43,7 @@
 /**
  * DFS
  * Ref[1]: https://www.jiuzhang.com/problem/maximum-depth-of-binary-tree/#tag-lang-cpp
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 /**
  * Definition of TreeNode:

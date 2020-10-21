@@ -32,7 +32,7 @@
 
 /**
  * Challenge: Do it in non-recursive.
- * Run Time: 727 ms
+ * Running Time: 727 ms
  */
 /**
  * // This is the interface that allows for creating nested lists.
@@ -96,7 +96,7 @@ public:
 };
 
 // /**
-//  * Run Time: 785 ms
+//  * Running Time: 785 ms
 //  */
 // /**
 //  * // This is the interface that allows for creating nested lists.

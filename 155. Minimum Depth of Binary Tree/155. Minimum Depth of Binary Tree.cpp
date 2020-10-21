@@ -44,7 +44,7 @@
  * BFS
  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/bfs-kuang-jia
  * Ref[2]: https://www.jiuzhang.com/problem/minimum-depth-of-binary-tree/
- * Run Time: 101ms
+ * Running Time: 101ms
  */
 /**
  * Definition of TreeNode:
@@ -105,7 +105,7 @@ public:
 // /**
 //  * Divide and conquer
 //  * Ref[1]: https://www.jiuzhang.com/problem/minimum-depth-of-binary-tree/
-//  * Run Time: 101ms
+//  * Running Time: 101ms
 //  */
 // /**
 //  * Definition of TreeNode:

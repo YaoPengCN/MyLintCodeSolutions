@@ -27,7 +27,7 @@
 */
 
 /**
- * Run Time:  405ms
+ * Running Time:  405ms
  */
 class Solution
 {

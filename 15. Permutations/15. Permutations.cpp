@@ -44,7 +44,7 @@
  * Do it without recursion.
  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
  * Ref[2]: https://www.jiuzhang.com/problem/permutations/#tag-lang-cpp
- * Run Time:  448ms
+ * Running Time:  448ms
  */
 
 class Solution
@@ -100,7 +100,7 @@ private:
 // /**
 //  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
 //  * Ref[2]: https://www.jiuzhang.com/problem/permutations/#tag-lang-cpp
-//  * Run Time:  403ms
+//  * Running Time:  403ms
 //  */
 
 // class Solution

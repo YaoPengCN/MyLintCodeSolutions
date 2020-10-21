@@ -22,7 +22,7 @@
 */
 
 /**
- * Run Time:  582ms
+ * Running Time:  582ms
  */
 class Solution
 {
@@ -48,7 +48,7 @@ public:
         /* //prefix sum in array
          * //ref[1]: https://geekstocode.com/prefix-sum-in-array/
          * //ref[2]: https://www.jiuzhang.com/problem/maximum-subarray/#tag-lang-cpp
-         * //Run Time: 776ms
+         * //Running Time: 776ms
          * //Time complexity O(n+k)
          * if (nums.empty())
          *    return NULL;

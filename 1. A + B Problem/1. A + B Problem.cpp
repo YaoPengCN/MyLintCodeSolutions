@@ -25,7 +25,7 @@
 
 /**
  * Challenge: do not use + or any arithmetic operators.
- * Run Time: 6ms
+ * Running Time: 6ms
  */
 class Solution {
 public:
@@ -49,7 +49,7 @@ public:
 };
 
 ///**
-// * Run Time: 6ms
+// * Running Time: 6ms
 // */
 ///* class Solution {
 //public:

@@ -47,7 +47,7 @@
  * Challenge 1: Using only 1 queue to implement it.
  * Challenge 2: Use BFS algorithm to do it.
  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-level-order-traversal/#tag-lang-cpp
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 /**
  * Definition of TreeNode:

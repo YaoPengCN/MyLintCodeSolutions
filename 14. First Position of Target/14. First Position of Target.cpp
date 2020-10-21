@@ -38,7 +38,7 @@
 
 /**
  * Challenge: If the count of numbers is bigger than 2^32, can your code work properly?
- * Run Time: 403ms
+ * Running Time: 403ms
  */
 class Solution
 {
@@ -81,7 +81,7 @@ public:
 };
 
 // /**
-//  * Run Time: 406ms
+//  * Running Time: 406ms
 //  */
 // class Solution
 // {

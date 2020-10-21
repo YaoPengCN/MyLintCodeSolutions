@@ -42,7 +42,7 @@
 
 /**
  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/dong-tai-gui-hua-xiang-jie-jin-jie
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 
 class Solution

@@ -49,7 +49,7 @@
  * 
  * Ref[1]: https://mp.weixin.qq.com/s/RXfnhSpVBmVneQjDSUSAVQ
  * Ref[2]: https://www.jiuzhang.com/problem/backpack-ii/
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 class Solution
 {
@@ -79,7 +79,7 @@ public:
 // /**
 //  * Ref[1]: https://mp.weixin.qq.com/s/RXfnhSpVBmVneQjDSUSAVQ
 //  * Ref[2]: https://www.jiuzhang.com/problem/backpack-ii/
-//  * Run Time: 51ms
+//  * Running Time: 51ms
 //  */
 // class Solution
 // {

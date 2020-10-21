@@ -33,7 +33,7 @@
 
 /**
  * Challenge: Can you do it in time complexity O(n)?
- * Run Time:  50ms
+ * Running Time:  50ms
  */
 class Solution
 {
@@ -59,7 +59,7 @@ public:
         /* //prefix sum in array
          * //ref[1]: https://geekstocode.com/prefix-sum-in-array/
          * //ref[2]: https://www.jiuzhang.com/problem/maximum-subarray/#tag-lang-cpp
-         * //Run Time: 50ms
+         * //Running Time: 50ms
          * //Time complexity O(n+k)
          * if (nums.size() < 0)
          *    return 0;

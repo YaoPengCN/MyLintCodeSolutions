@@ -44,7 +44,7 @@
  * Ref[1]: https://blog.csdn.net/u012280578/article/details/72934999
  * Ref[2]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/bei-bao-ling-qian
  * Ref[3]: https://www.jiuzhang.com/problem/coin-change-ii/
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 class Solution
 {

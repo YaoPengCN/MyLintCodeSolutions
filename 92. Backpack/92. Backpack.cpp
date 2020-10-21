@@ -46,7 +46,7 @@
  * 
  * Ref[1]: https://mp.weixin.qq.com/s/RXfnhSpVBmVneQjDSUSAVQ
  * Ref[2]: https://www.jiuzhang.com/problem/backpack/#tag-lang-cpp
- * Run Time: 253ms
+ * Running Time: 253ms
  */
 class Solution
 {

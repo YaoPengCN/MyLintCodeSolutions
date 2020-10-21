@@ -18,7 +18,7 @@
 
 /**
  * Challenge: O(log N) time
- * Run Time: 27ms
+ * Running Time: 27ms
  */
 class Solution {
 public:

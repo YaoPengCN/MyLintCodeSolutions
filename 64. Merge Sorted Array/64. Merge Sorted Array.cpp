@@ -31,7 +31,7 @@
 
 /**
  * Ref[1]: https://www.jiuzhang.com/problem/merge-sorted-array/
- * Run Time: 435ms
+ * Running Time: 435ms
  */
 class Solution
 {

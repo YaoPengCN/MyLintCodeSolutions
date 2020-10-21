@@ -25,7 +25,7 @@
  * Challenge
  * O(log(n)) time
  * 
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 class Solution
 {

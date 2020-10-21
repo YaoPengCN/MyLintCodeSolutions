@@ -34,7 +34,7 @@
  * Monotone stack
  * Ref[1]: https://mp.weixin.qq.com/s/KYfjBejo84AmajnPZNs5nA
  * Ref[2]: https://www.jiuzhang.com/problem/next-greater-element-ii/#tag-lang-cpp
- * Run Time: 151ms
+ * Running Time: 151ms
  */
 
 class Solution
@@ -65,7 +65,7 @@ public:
 };
 
 // /**
-//  * Run Time: 104ms
+//  * Running Time: 104ms
 //  */
 // class Solution
 // {

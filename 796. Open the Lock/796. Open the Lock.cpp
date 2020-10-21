@@ -40,7 +40,7 @@
  * Bidirectional BFS
  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/bfs-kuang-jia
  * Ref[2]: https://www.jiuzhang.com/problem/open-the-lock/
- * Run Time: 403ms
+ * Running Time: 403ms
  */
 class Solution
 {

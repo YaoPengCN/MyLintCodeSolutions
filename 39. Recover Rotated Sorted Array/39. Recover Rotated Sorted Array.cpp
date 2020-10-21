@@ -28,7 +28,7 @@
 
 /**
  * Challenge: In-place, O(1) extra space and O(n) time.
- * Run Time:  51ms
+ * Running Time:  51ms
  */
 class Solution
 {

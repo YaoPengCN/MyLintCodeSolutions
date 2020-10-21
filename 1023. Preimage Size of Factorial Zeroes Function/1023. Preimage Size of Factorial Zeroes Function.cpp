@@ -33,7 +33,7 @@
 
 /**
  * Ref[1]: https://labuladong.gitbook.io/algo/gao-pin-mian-shi-xi-lie/jie-cheng-ti-mu
- * Run Time: 51ms
+ * Running Time: 51ms
  */
 
 class Solution

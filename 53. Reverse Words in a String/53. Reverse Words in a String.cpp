@@ -34,7 +34,7 @@
 */
 
 /**
- * Run Time:  299ms
+ * Running Time:  299ms
  */
 class Solution
 {

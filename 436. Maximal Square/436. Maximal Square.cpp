@@ -34,7 +34,7 @@
 
 /**
  * Ref: https://www.jiuzhang.com/problem/maximal-square/#tag-lang-cpp
- * Run Time: 151ms
+ * Running Time: 151ms
  */
 
 class Solution

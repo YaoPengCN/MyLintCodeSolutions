@@ -38,7 +38,7 @@
  * 两端同时除以m+1: min_x=n/(m+1)+m/2=n/(m+1)+(m+1)/2-1/2 
  * 放缩得:min_x>=2sqrt(n/2)-1/2=(sqrt(8n)-1)/2
  * Ref[1]: https://www.jiuzhang.com/problem/drop-eggs/
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 class Solution
 {
@@ -58,7 +58,7 @@ public:
 //  * Find the minimum x, such that x + (x - 1) +...+ 1 >= n.
 //  * Ref[1]: https://mp.weixin.qq.com/s/xn4LjWfaKTPQeCXR0qDqZg
 //  * Ref[2]: https://www.jiuzhang.com/problem/drop-eggs/
-//  * Run Time: 50ms
+//  * Running Time: 50ms
 //  */
 // class Solution
 // {

@@ -47,7 +47,7 @@
  *
  * Stack
  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-postorder-traversal/#tag-lang-cpp
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 /**
  * Definition of TreeNode:
@@ -99,7 +99,7 @@ public:
 //  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-postorder-traversal/#tag-lang-cpp
 //  * Ref[2]: https://zhuanlan.zhihu.com/p/101321696
 //  * Ref[3]: https://zhuanlan.zhihu.com/p/89858150
-//  * Run Time: 50ms
+//  * Running Time: 50ms
 //  */
 // /**
 //  * Definition of TreeNode:
@@ -160,7 +160,7 @@ public:
 
 // /**
 //  * Divide and conquer
-//  * Run Time: 50ms
+//  * Running Time: 50ms
 //  */
 // /**
 //  * Definition of TreeNode:

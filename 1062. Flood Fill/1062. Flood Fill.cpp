@@ -37,7 +37,7 @@
  * */
 
 /**
- * Run Time: 50ms
+ * Running Time: 50ms
  */
 
 class Solution

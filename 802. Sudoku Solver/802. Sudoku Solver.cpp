@@ -44,7 +44,7 @@
  * Ref[1]:https://www.cnblogs.com/yuzhangcmu/p/4067733.html
  * Ref[2]: https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/sudoku
  * Ref[3]: https://www.jiuzhang.com/problem/sudoku-solver/#tag-lang-cpp
- * Run Time: 270ms
+ * Running Time: 270ms
  */
 class Solution
 {

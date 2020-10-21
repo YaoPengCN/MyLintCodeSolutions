@@ -48,7 +48,7 @@
  * 
  * Stack
  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-preorder-traversal/#tag-lang-ALL
- * Run Time: 101ms
+ * Running Time: 101ms
  */
 /**
  * Definition of TreeNode:
@@ -103,7 +103,7 @@ public:
 //  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-preorder-traversal/#tag-lang-ALL
 //  * Ref[2]: https://zhuanlan.zhihu.com/p/101321696
 //  * Ref[3]: https://zhuanlan.zhihu.com/p/89858150
-//  * Run Time: 50ms
+//  * Running Time: 50ms
 //  */
 // /**
 //  * Definition of TreeNode:
@@ -156,7 +156,7 @@ public:
 // /**
 //  * Divide and conquer
 //  * Ref[1]: https://www.jiuzhang.com/problem/binary-tree-preorder-traversal/#tag-lang-ALL
-//  * Run Time: 51ms
+//  * Running Time: 51ms
 //  */
 // /**
 //  * Definition of TreeNode:

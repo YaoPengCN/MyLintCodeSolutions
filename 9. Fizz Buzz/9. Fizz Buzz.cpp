@@ -38,7 +38,7 @@
 
 /**
  * Challenge: Can you do it with only one if statement?
- * Run Time: 50 ms
+ * Running Time: 50 ms
  */
 class Solution {
 public:
@@ -57,7 +57,7 @@ public:
 };
 
 // /**
-//  * Run Time: 50 ms
+//  * Running Time: 50 ms
 //  */
 // class Solution {
 // public:

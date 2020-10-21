@@ -23,7 +23,7 @@
 */
 
 /**
- * Run Time:  101ms
+ * Running Time:  101ms
  */
 class Solution
 {

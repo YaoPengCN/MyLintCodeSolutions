@@ -48,7 +48,7 @@
  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
  * Ref[2]: https://www.jiuzhang.com/problem/n-queens/
  * Ref[3]: https://blog.csdn.net/wusecaiyun/article/details/47111529
- * Run Time:  355ms
+ * Running Time:  355ms
  */
 
 class Solution
@@ -109,7 +109,7 @@ public:
 // /**
 //  * Ref[1]: https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/hui-su-suan-fa-xiang-jie-xiu-ding-ban
 //  * Ref[2]: https://www.jiuzhang.com/problem/n-queens/
-//  * Run Time:  288ms
+//  * Running Time:  288ms
 //  */
 
 // class Solution

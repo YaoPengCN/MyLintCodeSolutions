@@ -38,7 +38,7 @@
  * Monotone stack and hashmap
  * Ref[1]: https://mp.weixin.qq.com/s/KYfjBejo84AmajnPZNs5nA
  * Ref[2]: https://www.jiuzhang.com/problem/next-greater-element-i/#tag-lang-cpp
- * Run Time: 101ms
+ * Running Time: 101ms
  */
 
 class Solution
@@ -82,7 +82,7 @@ public:
 };
 
 // /**
-//  * Run Time: 50ms
+//  * Running Time: 50ms
 //  */
 // class Solution
 // {
