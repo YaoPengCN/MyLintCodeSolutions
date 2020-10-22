@@ -24,7 +24,7 @@
  * */
 
 /**
- * DFS with reversed direction
+ * DP with reversed direction
  * Ref[1]: https://www.jiuzhang.com/problem/longest-valid-parentheses/#tag-lang-cpp
  * Running Time: 561ms
  */
@@ -41,7 +41,10 @@ public:
         if (s.size() <= 1)
             return 0;
         int result = 0;
+
+        // dp[i] presents the length of the longest valid sub-string starting from i to s.size()-1
         vector<int> dp(s.size(), 0);
+
         for (int i = s.size() - 2; i >= 0; i--)
         {
             if (s[i] == '(')
