@@ -1,6 +1,5 @@
 /** 
  * 569. Add Digits
-
  * 
  * Difficulty
  * Easy
@@ -34,7 +33,11 @@
  * */
 
 /**
- * Running Time: 50ms
+ * Challenge
+ * Could you do it without any loop/recursion in O(1) runtime?
+ * 
+ * Ref[1]: https://www.lintcode.com/problem/add-digits/note?ordering=-like_count
+ * Running Time: 51ms
  */
 
 class Solution
@@ -49,19 +52,44 @@ public:
         if (num < 10)
             return num;
 
-        while (num >= 10)
-        {
-            int cur = 0;
-            while (num > 0)
-            {
-                int digit = num % 10;
-                cur += digit;
-                num /= 10;
-            }
-            num = cur;
-            if (num < 10)
-                break;
-        }
-        return num;
+        // num = a0 + a1 * 10 + a2 * 100 + ... + ak * 10^k = (a0 + a1 + ... + ak) + 9(a1 + a2 + ... + ak) + 99(a2 + ... + ak) + ... + (10^k - 1)ak
+        // Let num1 = a0 + a1 + ... + ak, num = num1 + 9 * x1, where x1 = (a1 + a2 + ... + ak) + 11 (a2 + ... + ak) + ...
+        // Similarly, num1 = num2 + 9 * x2 ... until numl < 10
+        // Therefore, num = numl + 9 * x_numl 
+        // numl = num % 9 is the result
+        return num % 9 == 0 ? 9 : num % 9;
     }
 };
+
+// /**
+//  * Running Time: 50ms
+//  */
+
+// class Solution
+// {
+// public:
+//     /**
+//      * @param num: a non-negative integer
+//      * @return: one digit
+//      */
+//     int addDigits(int num)
+//     {
+//         if (num < 10)
+//             return num;
+
+//         while (num >= 10)
+//         {
+//             int cur = 0;
+//             while (num > 0)
+//             {
+//                 int digit = num % 10;
+//                 cur += digit;
+//                 num /= 10;
+//             }
+//             num = cur;
+//             if (num < 10)
+//                 break;
+//         }
+//         return num;
+//     }
+// };
