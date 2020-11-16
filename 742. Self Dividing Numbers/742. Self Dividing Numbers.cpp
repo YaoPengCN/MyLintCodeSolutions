@@ -59,7 +59,7 @@ public:
             lower = 1;
 
         for (long i = lower; i <= upper; i++)
-        // 0<=L<=R<=2^31-1, if int i=2^31-1, then i++ would cause overflow.
+        // 0<=L<=R<=2^31-1, if int i=2^31-1, then i++ would cause an overflow.
         {
             long num = i;
             while (num > 0)
