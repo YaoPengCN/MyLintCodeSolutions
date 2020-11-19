@@ -38,7 +38,12 @@
  * */
 
 /**
- * Running Time:  201ms
+ * Challenge
+ * O(n) time, O(1) extra memory.
+ * 
+ * Partition (a variant of quick sort)
+ * Ref: https://www.jiuzhang.com/problem/kth-largest-element/#tag-lang-cpp
+ * Running Time:  50ms
  */
 class Solution
 {
@@ -50,7 +55,63 @@ public:
      */
     int kthLargestElement(int n, vector<int> &nums)
     {
-        sort(nums.rbegin(), nums.rend());
-        return nums[n - 1];
+        if (nums.size() == 0 || n < 1 || n > nums.size())
+            return -1;
+        n = nums.size() - n;
+        return partition(nums, 0, nums.size() - 1, n);
+    }
+
+private:
+    int partition(vector<int> &nums, int start, int end, int k)
+    {
+        int left = start, right = end;
+        int pivot = nums[left];
+
+        while (left <= right)
+        {
+            while (left <= right && nums[left] < pivot)
+            {
+                left++;
+            }
+            while (left <= right && nums[right] > pivot)
+            {
+                right--;
+            }
+            if (left <= right)
+            {
+                swap(nums[left],nums[right]);
+                left++;
+                right--;
+            }
+        }
+
+        if (k <= right)
+        {
+            return partition(nums, start, right, k);
+        }
+        if (k >= left)
+        {
+            return partition(nums, left, end, k);
+        }
+        return nums[k];
     }
 };
+
+// /**
+//  * Time complexity: O(nlogn)
+//  * Running Time:  201ms
+//  */
+// class Solution
+// {
+// public:
+//     /**
+//      * @param n: An integer
+//      * @param nums: An array
+//      * @return: the Kth largest element
+//      */
+//     int kthLargestElement(int n, vector<int> &nums)
+//     {
+//         sort(nums.rbegin(), nums.rend());
+//         return nums[n - 1];
+//     }
+// };
