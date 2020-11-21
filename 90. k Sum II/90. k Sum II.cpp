@@ -5,7 +5,7 @@
  * Medium
  * 
  * Description
- * Given n unique postive integers, number k (1<=k<=n) and target.
+ * Given n unique positive integers, number k (1<=k<=n) and target.
  * Find all possible k integers where their sum is target.
  * 
  * Example
@@ -46,7 +46,7 @@ class Solution
 public:
     /*
      * @param A: an integer array
-     * @param k: a postive integer <= length(A)
+     * @param k: a positive integer <= length(A)
      * @param target: an integer
      * @return: A list of lists of integer
      */
