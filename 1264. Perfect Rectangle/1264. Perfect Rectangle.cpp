@@ -61,6 +61,7 @@
  */
 
 /**
+ * If the covered rectangle only has 4 corners，the covered rectangle is a perfect rectangle
  * Ref[1]: https://mp.weixin.qq.com/s/PL7h_5hx6XZ1hEyVVusRBA
  * Ref[2]: https://www.jiuzhang.com/problem/perfect-rectangle/#tag-lang-cpp
  * Running Time: 50ms
@@ -78,12 +79,6 @@ public:
 		if (rectangles.empty() || rectangles.size() == 1)
 			return true;
 
-		// "areaSum" records the sum of the area of the single rectangles
-		int areaSum = 0;
-		// "cover" records the coordinates of the covered rectangle
-		// cover = [x0, y0, x1, y1]
-		vector<int> cover = {INT_MAX, INT_MAX, INT_MIN, INT_MIN};
-		
 		// "hash" records the appearacne times of each coordinate.
 		// unordered_map could not hash vector<int> directly
 		// so convert vector<int> to string
@@ -91,13 +86,6 @@ public:
 
 		for (vector<vector<int>>::size_type i = 0; i != rectangles.size(); i++)
 		{
-			areaSum += area(rectangles[i]);
-
-			cover[0] = min(cover[0], rectangles[i][0]);
-			cover[1] = min(cover[1], rectangles[i][1]);
-			cover[2] = max(cover[2], rectangles[i][2]);
-			cover[3] = max(cover[3], rectangles[i][3]);
-
 			// rectangles[i] = [x0, y0, x1, y1]
 			// hash[x0, y0]++
 			string tem = to_string(rectangles[i][0]) + ',' + to_string(rectangles[i][1]);
@@ -106,7 +94,7 @@ public:
 			// hash[x1, y1]++
 			tem = to_string(rectangles[i][2]) + ',' + to_string(rectangles[i][3]);
 			hash[tem]++;
-			
+
 			// hash[x0, y1]++
 			tem = to_string(rectangles[i][0]) + ',' + to_string(rectangles[i][3]);
 			hash[tem]++;
@@ -115,10 +103,6 @@ public:
 			tem = to_string(rectangles[i][2]) + ',' + to_string(rectangles[i][1]);
 			hash[tem]++;
 		}
-
-		// the sum of the areas should be equal to the area of the coverd rectangle
-		if (areaSum != area(cover))
-			return false;
 
 		// the covered rectangle should only have 4 corners
 		// each corner only appears once in all the single rectangles.
@@ -131,21 +115,98 @@ public:
 				return false;
 		}
 
-		// if 1. the sum of the areas equals to the area of the coverd rectangle
-		// 2.  the covered rectangle only has 4 corners
+		// if the covered rectangle only has 4 corners，
 		// the covered rectangle is a perfect rectangle
 		return true;
 	}
-
-private:
-	int
-	area(vector<int> coordinates)
-	{
-		// coordinates[x0, y0, x1, y1]
-		// area = (x1 - x0) * (y1 - y0)
-		return (coordinates[3] - coordinates[1]) * (coordinates[2] - coordinates[0]);
-	}
 };
+
+// /**
+//  * Ref[1]: https://mp.weixin.qq.com/s/PL7h_5hx6XZ1hEyVVusRBA
+//  * Ref[2]: https://www.jiuzhang.com/problem/perfect-rectangle/#tag-lang-cpp
+//  * Running Time: 50ms
+//  */
+
+// class Solution
+// {
+// public:
+// 	/**
+//      * @param rectangles: N axis-aligned rectangles
+//      * @return: if they all together form an exact cover of a rectangular region
+//      */
+// 	bool isRectangleCover(vector<vector<int>> &rectangles)
+// 	{
+// 		if (rectangles.empty() || rectangles.size() == 1)
+// 			return true;
+
+// 		// "areaSum" records the sum of the area of the single rectangles
+// 		int areaSum = 0;
+// 		// "cover" records the coordinates of the covered rectangle
+// 		// cover = [x0, y0, x1, y1]
+// 		vector<int> cover = {INT_MAX, INT_MAX, INT_MIN, INT_MIN};
+
+// 		// "hash" records the appearacne times of each coordinate.
+// 		// unordered_map could not hash vector<int> directly
+// 		// so convert vector<int> to string
+// 		unordered_map<string, int> hash;
+
+// 		for (vector<vector<int>>::size_type i = 0; i != rectangles.size(); i++)
+// 		{
+// 			areaSum += area(rectangles[i]);
+
+// 			cover[0] = min(cover[0], rectangles[i][0]);
+// 			cover[1] = min(cover[1], rectangles[i][1]);
+// 			cover[2] = max(cover[2], rectangles[i][2]);
+// 			cover[3] = max(cover[3], rectangles[i][3]);
+
+// 			// rectangles[i] = [x0, y0, x1, y1]
+// 			// hash[x0, y0]++
+// 			string tem = to_string(rectangles[i][0]) + ',' + to_string(rectangles[i][1]);
+// 			hash[tem]++;
+
+// 			// hash[x1, y1]++
+// 			tem = to_string(rectangles[i][2]) + ',' + to_string(rectangles[i][3]);
+// 			hash[tem]++;
+
+// 			// hash[x0, y1]++
+// 			tem = to_string(rectangles[i][0]) + ',' + to_string(rectangles[i][3]);
+// 			hash[tem]++;
+
+// 			// hash[x1, y0]++
+// 			tem = to_string(rectangles[i][2]) + ',' + to_string(rectangles[i][1]);
+// 			hash[tem]++;
+// 		}
+
+// 		// the sum of the areas should be equal to the area of the coverd rectangle
+// 		if (areaSum != area(cover))
+// 			return false;
+
+// 		// the covered rectangle should only have 4 corners
+// 		// each corner only appears once in all the single rectangles.
+// 		int corner = 0;
+// 		for (auto &item : hash)
+// 		{
+// 			if ((item.second) == 1)
+// 				corner++;
+// 			if (corner > 4)
+// 				return false;
+// 		}
+
+// 		// if 1. the sum of the areas equals to the area of the coverd rectangle
+// 		// 2.  the covered rectangle only has 4 corners
+// 		// the covered rectangle is a perfect rectangle
+// 		return true;
+// 	}
+
+// private:
+// 	int
+// 	area(vector<int> coordinates)
+// 	{
+// 		// coordinates[x0, y0, x1, y1]
+// 		// area = (x1 - x0) * (y1 - y0)
+// 		return (coordinates[3] - coordinates[1]) * (coordinates[2] - coordinates[0]);
+// 	}
+// };
 
 // /**
 //  * Ref[1]: https://mp.weixin.qq.com/s/PL7h_5hx6XZ1hEyVVusRBA
