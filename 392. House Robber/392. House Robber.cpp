@@ -45,13 +45,22 @@
  * Ref[2]: https://www.jiuzhang.com/problem/house-robber/#tag-lang-cpp
  * Running Time: ms
  */
-class Solution {
+class Solution
+{
 public:
     /**
      * @param A: An array of non-negative integers
      * @return: The maximum amount of money you can rob tonight
      */
-    long long houseRobber(vector<int> &A) {
-        // write your code here
+    long long houseRobber(vector<int> &A)
+    {
+        vector<long long> dp(2);
+        for (vector<int>::size_type i = 1; i <= A.size(); i++)
+        {
+            long long tmp = max(dp[0], dp[1]);
+            dp[1] = dp[0] + A[i - 1];
+            dp[0] = tmp;
+        }
+        return max(dp[0], dp[1]);
     }
 };
