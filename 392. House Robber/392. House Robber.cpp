@@ -43,7 +43,7 @@
  * Dynamic programming
  * Ref[1]: https://mp.weixin.qq.com/s/z44hk0MW14_mAQd7988mfw
  * Ref[2]: https://www.jiuzhang.com/problem/house-robber/#tag-lang-cpp
- * Running Time: ms
+ * Running Time: 302ms
  */
 class Solution
 {
@@ -55,10 +55,10 @@ public:
     long long houseRobber(vector<int> &A)
     {
         vector<long long> dp(2);
-        for (vector<int>::size_type i = 1; i <= A.size(); i++)
+        for (vector<int>::size_type i = 0; i != A.size(); i++)
         {
             long long tmp = max(dp[0], dp[1]);
-            dp[1] = dp[0] + A[i - 1];
+            dp[1] = dp[0] + A[i];
             dp[0] = tmp;
         }
         return max(dp[0], dp[1]);
