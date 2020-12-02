@@ -18,6 +18,7 @@
  * 
  * Example
  * Example 1
+ * Input:
  * costs = [[14,2,11],[11,14,5],[14,3,10]]
  * Output: 10
  * Explanation:
