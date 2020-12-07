@@ -47,10 +47,47 @@
  * */
 
 /** 
- * Maxheap, minheap
+ * Challenge
+ * Total run time in O(nlogn).
+ * 
+ * multiset
  * Ref: https://www.jiuzhang.com/problem/find-median-from-data-stream/#tag-lang-cpp
- * Running Time:  101ms
+ * Running Time:  62ms
  */
+
+template <class T>
+class MedianStream
+{
+public:
+    inline void add(const T &x)
+    {
+        // Count elements BEFORE insertion
+        const int n = cache.size();
+        cache.insert(x);
+        if (n == 0)
+        {
+            pos = cache.begin();
+            return;
+        }
+        if (x >= *pos && n % 2 == 0)
+        {
+            ++pos;
+            return;
+        }
+        if (x < *pos && n % 2 == 1)
+            --pos;
+    }
+
+    inline T median() const
+    {
+        return *pos;
+    }
+
+private:
+    multiset<T> cache;
+    typename multiset<T>::iterator pos;
+};
+
 class Solution
 {
 public:
@@ -60,37 +97,62 @@ public:
      */
     vector<int> medianII(vector<int> &nums)
     {
-        vector<int> ans;
-        for (int num : nums)
+        MedianStream<int> stream;
+        vector<int> medians;
+        for (const int &x : nums)
         {
-            push(num);
-            ans.push_back(maxQ.top());
+            stream.add(x);
+            medians.push_back(stream.median());
         }
-        return ans;
-    }
-
-private:
-    priority_queue<int, vector<int>, greater<int>> minQ;
-    priority_queue<int> maxQ;
-    void push(int num)
-    {
-        if (maxQ.empty() || num <= maxQ.top())
-            maxQ.push(num);
-        else
-            minQ.push(num);
-        rebalance();
-    }
-    void rebalance()
-    {
-        if (maxQ.size() - 1 > minQ.size())
-        {
-            minQ.push(maxQ.top());
-            maxQ.pop();
-        }
-        if (minQ.size() > maxQ.size())
-        {
-            maxQ.push(minQ.top());
-            minQ.pop();
-        }
+        return medians;
     }
 };
+
+// /**
+//  * Maxheap, minheap
+//  * Ref: https://www.jiuzhang.com/problem/find-median-from-data-stream/#tag-lang-cpp
+//  * Running Time:  101ms
+//  */
+// class Solution
+// {
+// public:
+//     /**
+//      * @param nums: A list of integers
+//      * @return: the median of numbers
+//      */
+//     vector<int> medianII(vector<int> &nums)
+//     {
+//         vector<int> ans;
+//         for (int num : nums)
+//         {
+//             push(num);
+//             ans.push_back(maxQ.top());
+//         }
+//         return ans;
+//     }
+
+// private:
+//     priority_queue<int, vector<int>, greater<int>> minQ;
+//     priority_queue<int> maxQ;
+//     void push(int num)
+//     {
+//         if (maxQ.empty() || num <= maxQ.top())
+//             maxQ.push(num);
+//         else
+//             minQ.push(num);
+//         rebalance();
+//     }
+//     void rebalance()
+//     {
+//         if (maxQ.size() - 1 > minQ.size())
+//         {
+//             minQ.push(maxQ.top());
+//             maxQ.pop();
+//         }
+//         if (minQ.size() > maxQ.size())
+//         {
+//             maxQ.push(minQ.top());
+//             minQ.pop();
+//         }
+//     }
+// };
