@@ -33,7 +33,7 @@
 
 /**
  * Dynamic programming
- * Ref: https://mp.weixin.qq.com/s/cwunN4Uoo4ZfO13kgkHVPQ
+ * Space complexity: O(M+N)
  * Running Time: 101ms
  */
 class Solution
@@ -48,31 +48,72 @@ public:
         if (grid.empty())
             return 0;
 
-        vector<vector<int>> dp;
+        vector<int> dpRow;
+        vector<int> dpColumn;
 
-        vector<int> temp;
-        for (vector<int>::size_type i = 0; i != grid[0].size(); i++)
-            temp.push_back(INT_MAX);
-
-        for (vector<int>::size_type i = 0; i != grid.size(); i++)
-            dp.push_back(temp);
-
-        dp[0][0] = grid[0][0];
+        dpRow.push_back(grid[0][0]);
+        dpColumn.push_back(grid[0][0]);
 
         for (int i = 1; i != grid[0].size(); i++)
-            dp[0][i] = dp[0][i - 1] + grid[0][i];
-
+            dpRow.push_back(dpRow[i - 1] + grid[0][i]);
         for (int i = 1; i != grid.size(); i++)
-            dp[i][0] = dp[i - 1][0] + grid[i][0];
+            dpColumn.push_back(dpColumn[i - 1] + grid[i][0]);
 
         for (int i = 1; i != grid.size(); i++)
         {
             for (int j = 1; j != grid[0].size(); j++)
             {
-                dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+                dpRow[j] = min(dpRow[j], dpColumn[i]) + grid[i][j];
+                dpColumn[i] = dpRow[j];
             }
         }
 
-        return dp[grid.size() - 1][grid[0].size() - 1];
+        return dpRow[dpRow.size() - 1];
     }
 };
+
+// /**
+//  * Dynamic programming
+//  * Ref: https://mp.weixin.qq.com/s/cwunN4Uoo4ZfO13kgkHVPQ
+//  * Running Time: 101ms
+//  */
+// class Solution
+// {
+// public:
+//     /**
+//      * @param grid: a list of lists of integers
+//      * @return: An integer, minimizes the sum of all numbers along its path
+//      */
+//     int minPathSum(vector<vector<int>> &grid)
+//     {
+//         if (grid.empty())
+//             return 0;
+
+//         vector<vector<int>> dp;
+
+//         vector<int> temp;
+//         for (vector<int>::size_type i = 0; i != grid[0].size(); i++)
+//             temp.push_back(INT_MAX);
+
+//         for (vector<int>::size_type i = 0; i != grid.size(); i++)
+//             dp.push_back(temp);
+
+//         dp[0][0] = grid[0][0];
+
+//         for (int i = 1; i != grid[0].size(); i++)
+//             dp[0][i] = dp[0][i - 1] + grid[0][i];
+
+//         for (int i = 1; i != grid.size(); i++)
+//             dp[i][0] = dp[i - 1][0] + grid[i][0];
+
+//         for (int i = 1; i != grid.size(); i++)
+//         {
+//             for (int j = 1; j != grid[0].size(); j++)
+//             {
+//                 dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+//             }
+//         }
+
+//         return dp[grid.size() - 1][grid[0].size() - 1];
+//     }
+// };
