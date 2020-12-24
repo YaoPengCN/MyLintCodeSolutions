@@ -52,7 +52,7 @@
  * true
  *  
  * Related Problems
- * 1685. The mazeIV
+ * 1685. The maze IV
  * 789. The Maze III
  * 788. The Maze II
  */
