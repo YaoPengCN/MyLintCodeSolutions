@@ -47,10 +47,13 @@
  * */
 
 /**
- * DFS + backtracing
+ * Challenge
+ * Can you do it in both recursively and iteratively?
+ * 
+ * DFS iteratively
  *  
  * Ref: https://www.jiuzhang.com/problem/subsets-ii/#tag-lang-cpp
- * Running Time: 50ms
+ * Running Time: 101ms
  */
 
 class Solution
@@ -62,39 +65,81 @@ public:
      */
     vector<vector<int>> subsetsWithDup(vector<int> &nums)
     {
-        vector<vector<int>> res;
-
-        // nums must be sorted, or the solution would not pass
         sort(nums.begin(), nums.end());
+        vector<vector<int>> subsets = {{}};
 
-        // dfs
-        vector<int> subset;
-        dfs(nums, 0, subset, res);
-        return res;
-    }
+        // indexes records the indexes of ending elements of evert subsets
+        vector<int> indexes = {-1};
 
-private:
-    void dfs(vector<int> &nums, int k, vector<int> &subset, vector<vector<int>> &res)
-    {
-
-        // store the subset into res
-        res.push_back(vector<int>(subset));
-
-        // add an element in the subset
-        for (int i = k; i < nums.size(); ++i)
+        for (int i = 0; i != nums.size(); ++i)
         {
-            // pruning
-            if (i != k && nums[i] == nums[i - 1])
+            int size = subsets.size();
+            for (int s = 0; s != size; ++s)
             {
-                continue;
+                // remove duplications
+                if (i > 0 && nums[i] == nums[i - 1] && indexes[s] != i - 1)
+                {
+                    continue;
+                }
+                subsets.push_back(subsets[s]);
+                subsets.back().push_back(nums[i]);
+                indexes.push_back(i);
             }
-            subset.push_back(nums[i]);
-
-            // deeper dfs
-            dfs(nums, i + 1, subset, res);
-
-            // backtracking
-            subset.pop_back();
         }
+
+        return subsets;
     }
 };
+
+// /**
+//  * DFS + backtracing
+//  *
+//  * Ref: https://www.jiuzhang.com/problem/subsets-ii/#tag-lang-cpp
+//  * Running Time: 50ms
+//  */
+
+// class Solution
+// {
+// public:
+//     /**
+//      * @param nums: A set of numbers.
+//      * @return: A list of lists. All valid subsets.
+//      */
+//     vector<vector<int>> subsetsWithDup(vector<int> &nums)
+//     {
+//         vector<vector<int>> res;
+
+//         // nums must be sorted, or the solution would not pass
+//         sort(nums.begin(), nums.end());
+
+//         // dfs
+//         vector<int> subset;
+//         dfs(nums, 0, subset, res);
+//         return res;
+//     }
+
+// private:
+//     void dfs(vector<int> &nums, int k, vector<int> &subset, vector<vector<int>> &res)
+//     {
+
+//         // store the subset into res
+//         res.push_back(vector<int>(subset));
+
+//         // add an element in the subset
+//         for (int i = k; i < nums.size(); ++i)
+//         {
+//             // pruning
+//             if (i != k && nums[i] == nums[i - 1])
+//             {
+//                 continue;
+//             }
+//             subset.push_back(nums[i]);
+
+//             // deeper dfs
+//             dfs(nums, i + 1, subset, res);
+
+//             // backtracking
+//             subset.pop_back();
+//         }
+//     }
+// };
