@@ -32,8 +32,8 @@
  * Can you partition the array in-place and in O(n)?
  * 
  * Related Problems
- * 761. Smallest Subset
  * 769. Spiral Array
+ * 761. Smallest Subset
  * 625. Partition Array II
  * 373. Partition Array by Odd and Even
  * 144. Interleaving Positive and Negative Numbers 
