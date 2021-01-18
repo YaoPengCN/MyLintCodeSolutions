@@ -39,9 +39,16 @@
  * 
  * Ref: https://blog.csdn.net/yutianzuijin/article/details/50597413
  * 
- * treat each integer as an array of 32 elements
+ * truth table (expandable)
+ * use 2 bits to count the times of the appearance of an element
+ * 00 (0 times) -> 01 (1 times) -> 10 (2 times) -> 00 (3 times)
+ * Therefore,
+ * lowOutput = ~high & (low ^ input)
+ * highOutput = (high & (~low) & (~input)) | (~high & low & input)
+ * Moreover,
+ * highOutput = ~lowOutput & (high ^ input)
  *  
- * Running Time:  151ms
+ * Running Time:  50ms
  */
 
 class Solution
@@ -53,24 +60,93 @@ public:
      */
     int singleNumberII(vector<int> &A)
     {
-        if (A.empty())
-            return -1;
-
-        vector<int> count(32);
-        int res = 0;
+        int low = 0, high = 0;
         for (vector<int>::size_type i = 0; i != A.size(); i++)
         {
-            for (vector<int>::size_type j = 0; j != 32; j++)
-            {
-                count[j] += (A[i] >> j & 0x1);
-            }
+            low = ~high & (low ^ A[i]);
+            high = ~low & (high ^ A[i]);
         }
-
-        for (vector<int>::size_type i = 0; i != 32; i++)
-        {
-            res |= (count[i] % 3 << i);
-        }
-
-        return res;
+        return low;
     }
 };
+
+// /**
+//  * Challenge
+//  * One-pass, constant extra space.
+//  *
+//  * Ref: https://blog.csdn.net/yutianzuijin/article/details/50597413
+//  *
+//  * truth table
+//  * use 2 bits to count the times of the appearance of an element
+//  * 00 (0 times) -> 01 (1 times) -> 10 (2 times) -> 00 (3 times)
+//  * Therefore,
+//  * lowOutput = ~high & (low ^ input)
+//  * highOutput = (high & (~low) & (~input)) | (~high & low & input)
+//  *
+//  * Running Time:  101ms
+//  */
+
+// class Solution
+// {
+// public:
+//     /**
+//      * @param A: An integer array
+//      * @return: An integer
+//      */
+//     int singleNumberII(vector<int> &A)
+//     {
+//         if (A.empty())
+//             return -1;
+
+//         int low = 0, high = 0;
+//         for (vector<int>::size_type i = 0; i != A.size(); i++)
+//         {
+//             int lowTemp = ~high & (low ^ A[i]);
+//             high = (high & ~low & ~A[i]) | (~high & low & A[i]);
+//             low = lowTemp;
+//         }
+//         return low;
+//     }
+// };
+
+// /**
+//  * Challenge
+//  * One-pass, constant extra space.
+//  *
+//  * Ref: https://blog.csdn.net/yutianzuijin/article/details/50597413
+//  *
+//  * treat each integer as an array of 32 elements
+//  *
+//  * Running Time:  151ms
+//  */
+
+// class Solution
+// {
+// public:
+//     /**
+//      * @param A: An integer array
+//      * @return: An integer
+//      */
+//     int singleNumberII(vector<int> &A)
+//     {
+//         if (A.empty())
+//             return -1;
+
+//         vector<int> count(32);
+//         int res = 0;
+//         for (vector<int>::size_type i = 0; i != A.size(); i++)
+//         {
+//             for (vector<int>::size_type j = 0; j != 32; j++)
+//             {
+//                 count[j] += (A[i] >> j & 0x1);
+//             }
+//         }
+
+//         for (vector<int>::size_type i = 0; i != 32; i++)
+//         {
+//             res |= (count[i] % 3 << i);
+//         }
+
+//         return res;
+//     }
+// };
