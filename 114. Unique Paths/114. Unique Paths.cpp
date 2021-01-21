@@ -44,7 +44,7 @@
  * 
  * dynamic programming
  * 
- * Running Time: 54ms
+ * Running Time: 101ms
  */
 
 class Solution
@@ -65,22 +65,13 @@ public:
             return 1;
         }
 
-        vector<vector<int>> dp(m, vector<int>(n));
-        for (vector<int>::size_type i = 0; i != m; i++)
-        {
-            dp[i][0] = 1;
-        }
-        for (vector<int>::size_type i = 0; i != n; i++)
-        {
-            dp[0][i] = 1;
-        }
+        vector<int> dp(m, 1);
 
-        for (vector<int>::size_type i = 1; i != m; i++)
-            for (vector<int>::size_type j = 1; j != n; j++)
+        for (vector<int>::size_type j = 1; j != n; j++)
+            for (vector<int>::size_type i = 1; i != m; i++)
             {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                dp[i] += dp[i - 1];
             }
-
-        return dp[m - 1][n - 1];
+        return dp[m - 1];
     }
 };
