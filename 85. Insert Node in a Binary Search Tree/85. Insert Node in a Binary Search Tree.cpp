@@ -39,9 +39,12 @@
  * */
 
 /** 
+ * Challenge
+ * Can you do it without recursion?
+ * 
  * Ref: https://www.jiuzhang.com/problem/insert-node-in-a-binary-search-tree/
  *  
- * Running Time:  348ms
+ * Running Time:  391ms
  */
 
 /**
@@ -67,16 +70,76 @@ public:
      */
     TreeNode *insertNode(TreeNode *root, TreeNode *node)
     {
-        if (root == NULL)
+        if (root == nullptr)
         {
             return node;
         }
-        if (node->val < root->val)
+        TreeNode *temp = root;
+        while (temp != nullptr)
         {
-            root->left = insertNode(root->left, node);
-            return root;
+            if (node->val > temp->val)
+            {
+                //root->right
+                if (temp->right == nullptr)
+                {
+                    temp->right = node;
+                    return root;
+                    break;
+                }
+                temp = temp->right;
+                continue;
+            }
+            //root->left
+            if (temp->left == nullptr)
+            {
+                temp->left = node;
+                return root;
+                break;
+            }
+            temp = temp->left;
         }
-        root->right = insertNode(root->right, node);
-        return root;
     }
 };
+
+// /**
+//  * Ref: https://www.jiuzhang.com/problem/insert-node-in-a-binary-search-tree/
+//  *
+//  * Running Time:  348ms
+//  */
+
+// /**
+//  * Definition of TreeNode:
+//  * class TreeNode {
+//  * public:
+//  *     int val;
+//  *     TreeNode *left, *right;
+//  *     TreeNode(int val) {
+//  *         this->val = val;
+//  *         this->left = this->right = NULL;
+//  *     }
+//  * }
+//  */
+
+// class Solution
+// {
+// public:
+//     /*
+//      * @param root: The root of the binary search tree.
+//      * @param node: insert this node into the binary search tree
+//      * @return: The root of the new binary search tree.
+//      */
+//     TreeNode *insertNode(TreeNode *root, TreeNode *node)
+//     {
+//         if (root == NULL)
+//         {
+//             return node;
+//         }
+//         if (node->val < root->val)
+//         {
+//             root->left = insertNode(root->left, node);
+//             return root;
+//         }
+//         root->right = insertNode(root->right, node);
+//         return root;
+//     }
+// };
