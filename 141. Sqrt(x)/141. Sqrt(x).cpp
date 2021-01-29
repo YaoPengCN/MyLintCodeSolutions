@@ -40,6 +40,9 @@
  */
 
 /**
+ * Challenge 
+ * O(log(x))
+ * 
  * Running Time: 50ms
  */
 
