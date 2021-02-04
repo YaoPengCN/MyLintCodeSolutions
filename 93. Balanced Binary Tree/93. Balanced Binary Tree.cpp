@@ -47,8 +47,9 @@
 
 /**
  * DFS
+ * If any unbalanced subtree is found, no need to continue but return false immediately.
  * Ref: https://www.jiuzhang.com/problem/balanced-binary-tree/
- * Running Time: 102ms
+ * Running Time: 41ms
  */
 
 /**
@@ -73,21 +74,65 @@ public:
      */
     bool isBalanced(TreeNode *root)
     {
-        return depth(root) != -1;
-    }
-
-private:
-    int depth(TreeNode *root)
-    {
-        if (root == nullptr)
+        function<int(TreeNode *)> dfs;
+        dfs = [&dfs](TreeNode *root) -> int {
+            if (root)
+            {
+                int depthl = dfs(root->left), depth2;
+                if (depthl < 0 || (depth2 = dfs(root->right)) < 0 ||
+                    depth2 > depthl + 1 || depthl > depth2 + 1)
+                    return -1;
+                return max(depthl, depth2) + 1;
+            }
             return 0;
-
-        int left = depth(root->left);
-        int right = depth(root->right);
-
-        if (left == -1 || right == -1 || abs(left - right) > 1)
-            return -1;
-
-        return max(left, right) + 1;
+        };
+        return dfs(root) >= 0;
     }
 };
+
+// /**
+//  * DFS
+//  * Ref: https://www.jiuzhang.com/problem/balanced-binary-tree/
+//  * Running Time: 102ms
+//  */
+
+// /**
+//  * Definition of TreeNode:
+//  * class TreeNode {
+//  * public:
+//  *     int val;
+//  *     TreeNode *left, *right;
+//  *     TreeNode(int val) {
+//  *         this->val = val;
+//  *         this->left = this->right = NULL;
+//  *     }
+//  * }
+//  */
+
+// class Solution
+// {
+// public:
+//     /**
+//      * @param root: The root of binary tree.
+//      * @return: True if this Binary tree is Balanced, or false.
+//      */
+//     bool isBalanced(TreeNode *root)
+//     {
+//         return depth(root) != -1;
+//     }
+
+// private:
+//     int depth(TreeNode *root)
+//     {
+//         if (root == nullptr)
+//             return 0;
+
+//         int left = depth(root->left);
+//         int right = depth(root->right);
+
+//         if (left == -1 || right == -1 || abs(left - right) > 1)
+//             return -1;
+
+//         return max(left, right) + 1;
+//     }
+// };
