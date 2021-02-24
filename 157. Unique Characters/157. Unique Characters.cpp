@@ -27,7 +27,7 @@
  * Challenge
  * What if you can not use additional data structures?
  * 
- * Running Time: 407ms
+ * Running Time: 324ms
  */
 
 class Solution
@@ -39,14 +39,12 @@ public:
      */
     bool isUnique(string &str)
     {
-        sort(str.begin(), str.end());
-
-        for (int i = 1; i != str.size(); i++)
-        {
-            if (str[i] == str[i - 1])
+        vector<int> ch(128,0);
+        for (int i = 0; i != str.length(); i++)
+            if (ch[str[i]] != 0)
                 return false;
-        }
-
+            else
+                ch[str[i]] = 1;
         return true;
     }
 };
@@ -54,7 +52,7 @@ public:
 // /**
 //  * Challenge
 //  * What if you can not use additional data structures?
-//  * 
+//  *
 //  * Running Time: 407ms
 //  */
 
